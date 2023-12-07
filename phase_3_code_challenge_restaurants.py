@@ -64,7 +64,6 @@ class Restaurant(Entity):
         except statistics.StatisticsError:
             return 0.0
 
-
 class Review(Entity):
     def __init__(self, customer, restaurant, rating):
         super().__init__(customer=customer, restaurant=restaurant, rating=rating)
@@ -83,12 +82,12 @@ def main():
     restaurant2 = Restaurant(name="Burger Palace")
 
     review1 = Review(customer1, restaurant1, 4)
-    review2 = Review(customer2, restaurant2, 5)
+    review2 = Review(customer1, restaurant2, 5)
 
     # Example usage of the methods
-    print(customer1.full_name)  # Output: John Doe
+    print(customer1.to_dict())  # Output: John Doe
     print(restaurant2.average_star_rating())  # Output: 5.0
-    print(customer2.num_reviews())  # Output: 1
+    print(customer1.num_reviews())  # Output: 1
 
 if __name__ == '__main__':
     main()
